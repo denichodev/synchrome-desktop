@@ -2,7 +2,7 @@
 import React from 'react';
 import { Provider } from 'react-redux';
 import { ConnectedRouter } from 'react-router-redux';
-import RootRoutes from '../routes/RootRoutes';
+import Routes from '../routes';
 
 type RootType = {
   store: {},
@@ -13,7 +13,7 @@ export default function Root({ store, history }: RootType) {
   return (
     <Provider store={store}>
       <ConnectedRouter history={history}>
-        <RootRoutes />
+        <Routes />
       </ConnectedRouter>
     </Provider>
   );
