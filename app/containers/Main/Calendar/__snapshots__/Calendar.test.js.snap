@@ -15,7 +15,7 @@ exports[`Calendar should match snapshot 1`] = `
       >
         <EventCalendar
           defaultView="month"
-          height={650}
+          height={580}
         />
       </div>
     </div>

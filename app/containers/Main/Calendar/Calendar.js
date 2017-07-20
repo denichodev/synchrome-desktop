@@ -11,7 +11,7 @@ class Calendar extends Component {
           <div className="card">
             <div className="card-block">
               <EventCalendar
-                height={630}
+                height={580}
               />
             </div>
           </div>

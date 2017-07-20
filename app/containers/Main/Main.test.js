@@ -12,7 +12,7 @@ function setup() {
   };
 }
 
-describe('App', () => {
+describe('Main', () => {
   it('should match snapshot', () => {
     const { enzymeWrapper } = setup();
     expect(enzymeWrapper).toMatchSnapshot();

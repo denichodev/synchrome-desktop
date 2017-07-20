@@ -16,5 +16,11 @@ export const generateEvents = () => {
     });
   }
 
+  arr.push({
+    title: 'event setahun',
+    start: '2017-01-01',
+    end: '2017-12-31'
+  });
+
   return arr;
 };
