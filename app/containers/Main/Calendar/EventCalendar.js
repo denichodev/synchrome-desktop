@@ -28,7 +28,6 @@ class EventCalendar extends Component {
     const { defaultView, height, header } = this.props;
 
     const events = generateEvents();
-    console.log(events);
 
     $('#calendar').fullCalendar({
       defaultView,

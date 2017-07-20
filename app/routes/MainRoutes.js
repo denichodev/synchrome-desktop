@@ -4,11 +4,13 @@ import { Switch, Route, Redirect } from 'react-router';
 
 import Home from '../containers/Main/Home/Home';
 import Calendar from '../containers/Main/Calendar/Calendar';
+import EventForm from '../containers/Main/EventForm/EventForm';
 
 export default () => (
   <Switch>
     <Route path="/home" name="Home" component={Home} />
     <Route path="/calendar" name="Calendar" component={Calendar} />
+    <Route path="/event" name="Event Form" component={EventForm} />
     <Redirect from="/" to="/home" />
   </Switch>
 );

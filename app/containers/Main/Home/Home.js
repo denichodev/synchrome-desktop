@@ -4,7 +4,7 @@ import React, { Component } from 'react';
 class Home extends Component {
   render() {
     return (
-      <div className="animated fadein">
+      <div className="animated fadeIn">
         <div className="row">
           <div className="col-md-12">
             <div className="card card-inverse card-primary">

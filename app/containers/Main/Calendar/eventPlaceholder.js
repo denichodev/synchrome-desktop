@@ -8,7 +8,7 @@ const randomMonth = () => {
 
 export const generateEvents = () => {
   let arr = [];
-  for (let i = 0; i < 500; i++) {
+  for (let i = 0; i < 100; i++) {
     arr.push({
       title: `event ${i}`,
       start: `2017-${randomMonth()}-${randomDay()}`,

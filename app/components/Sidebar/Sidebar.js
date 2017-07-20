@@ -19,6 +19,7 @@ class Sidebar extends Component {
   // }
 
   render() {
+    console.log(this.activeRoute('/calendar'));
     return (
       <div className="sidebar">
         <nav className="sidebar-nav">
@@ -28,14 +29,32 @@ class Sidebar extends Component {
                 <i className="icon-home" /> Home{' '}
               </NavLink>
             </li>
-            <li className="nav-item">
-              <NavLink
-                to={'/calendar'}
-                className="nav-link"
-                activeClassName="active"
+            <li className={this.activeRoute('/calendar')}>
+              <a
+                className="nav-link nav-dropdown-toggle"
+                href="#"
+                onClick={this.handleClick.bind(this)}
               >
-                <i className="icon-calendar" /> Calendar{' '}
-              </NavLink>
+                <i className="icon-calendar" /> Calendar
+              </a>
+              <ul className="nav-dropdown-items">
+                <li className="nav-item">
+                  <NavLink
+                    to={'/calendar/view'}
+                    className="nav-link"
+                    activeClassName="active"
+                  >
+                    <i className="icon-calendar" /> View Calendar
+                  </NavLink>
+                  <NavLink
+                    to={'/event'}
+                    className="nav-link"
+                    activeClassName="active"
+                  >
+                    <i className="icon-calendar" /> Add Events
+                  </NavLink>
+                </li>
+              </ul>
             </li>
           </ul>
         </nav>
