@@ -101,7 +101,9 @@
     "moduleDirectories": ["node_modules", "app/node_modules"],
     "transform": {
       "^.+\\.js$": "babel-jest"
-    }
+    },
+    "snapshotSerializers": ["<rootDir>/node_modules/enzyme-to-json/serializer"],
+    "setupFiles": ["./app/jestSetup.js"]
   },
   "devDependencies": {
     "babel-core": "^6.24.1",
