@@ -5,24 +5,18 @@ exports[`Calendar should match snapshot 1`] = `
   className="animated fadein"
 >
   <div
-    className="row"
+    className="col-md-12"
   >
     <div
-      className="col-md-12"
+      className="card"
     >
       <div
-        className="card card-inverse card-primary"
+        className="card-block"
       >
-        <div
-          className="card-header"
-        >
-          Calendar
-        </div>
-        <div
-          className="card-block"
-        >
-          <EventCalendar />
-        </div>
+        <EventCalendar
+          defaultView="month"
+          height={650}
+        />
       </div>
     </div>
   </div>
