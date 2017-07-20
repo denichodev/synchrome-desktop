@@ -1,0 +1,30 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`EventCalendar should match snapshot 1`] = `
+<div
+  className="animated fadein"
+>
+  <div
+    className="row"
+  >
+    <div
+      className="col-md-12"
+    >
+      <div
+        className="card card-inverse card-primary"
+      >
+        <div
+          className="card-header"
+        >
+          Calendar
+        </div>
+        <div
+          className="card-block"
+        >
+          <EventCalendar />
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
