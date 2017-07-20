@@ -8,12 +8,12 @@ class Calendar extends Component {
     return (
       <div className="animated fadein">
         <div className="col-md-12">
-          <div className="card card-inverse card-primary">
+          <div className="card">
             <div className="card-header">Calendar</div>
             <div className="card-block">
               <EventCalendar
                 width={'100%'}
-                height={400}
+                height={500}
               />
             </div>
           </div>
