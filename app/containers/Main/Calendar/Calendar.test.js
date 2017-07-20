@@ -1,10 +1,10 @@
 import React from 'react';
-import Main from './Main';
+import Calendar from './Calendar';
 
 function setup() {
   const props = {};
 
-  const enzymeWrapper = shallow(<Main {...props} />);
+  const enzymeWrapper = shallow(<Calendar {...props} />);
 
   return {
     props,
@@ -12,7 +12,7 @@ function setup() {
   };
 }
 
-describe('App', () => {
+describe('Calendar', () => {
   it('should match snapshot', () => {
     const { enzymeWrapper } = setup();
     expect(enzymeWrapper).toMatchSnapshot();

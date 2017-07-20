@@ -4,7 +4,7 @@ import Home from './Home';
 function setup() {
   const props = {};
 
-  const enzymeWrapper = mount(<Home {...props} />);
+  const enzymeWrapper = shallow(<Home {...props} />);
 
   return {
     props,
@@ -12,7 +12,7 @@ function setup() {
   };
 }
 
-describe('App', () => {
+describe('Home', () => {
   it('should match snapshot', () => {
     const { enzymeWrapper } = setup();
     expect(enzymeWrapper).toMatchSnapshot();
