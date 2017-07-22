@@ -47,7 +47,7 @@ class Sidebar extends Component {
                     <i className="icon-calendar" /> View Calendar
                   </NavLink>
                   <NavLink
-                    to={'/event'}
+                    to={'/event/create'}
                     className="nav-link"
                     activeClassName="active"
                   >

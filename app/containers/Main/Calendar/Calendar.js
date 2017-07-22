@@ -1,6 +1,7 @@
 // @flow
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
 
 import EventCalendar from './EventCalendar';
 import { generateEvents } from './eventPlaceholder';
@@ -28,9 +29,11 @@ class Calendar extends Component {
     return events;
   }
 
-  handleSelection = () => {
-    // Handle the selections of timerange in EventCalendar
-    alert('selected');
+  handleSelection = (start, end) => {
+    // Handle the selections of timerange in EventCalendar, start and end is a moment obj
+    const startAt = start.format('YYYY-M-D');
+    const endAt = end.format('YYYY-M-D');
+    this.props.history.push(`/event/create/${startAt}/${endAt}`);
   }
   
   render() {
@@ -66,4 +69,4 @@ const mapDispatchToProps = dispatch => ({
   fetchCalendar: () => dispatch(fetchCalendar())
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(Calendar);
+export default connect(mapStateToProps, mapDispatchToProps)(withRouter(Calendar));

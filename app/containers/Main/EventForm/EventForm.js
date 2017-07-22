@@ -6,7 +6,6 @@ class EventForm extends Component {
     // const { meta: { touched, error } } = field;
     // const className = `form-group ${touched && error ? 'has-danger' : ''}`;
     const { label, name, input, placeholder } = field;
-    console.log(input);
     return (
       <div className="form-group">
         <label htmlFor={name}>
@@ -42,6 +41,8 @@ class EventForm extends Component {
               <div className="card-header">Add New Event</div>
               <div className="card-block">
                 {this.renderForm()}
+                {this.props.match.params.start}
+                {this.props.match.params.end}
               </div>
             </div>
           </div>

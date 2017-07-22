@@ -6,7 +6,6 @@ import counter from './counter';
 import calendar from './calendar';
 
 const rootReducer = combineReducers({
-  counter,
   router,
   form: formReducer,
   calendar

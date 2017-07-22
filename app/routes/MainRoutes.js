@@ -10,7 +10,7 @@ export default () => (
   <Switch>
     <Route path="/home" name="Home" component={Home} />
     <Route path="/calendar/view" name="Calendar" component={Calendar} />
-    <Route path="/event" name="Event Form" component={EventForm} />
+    <Route path="/event/create/:start?/:end?" name="Event Form" component={EventForm} />
     <Redirect from="/" to="/home" />
   </Switch>
 );
