@@ -27,6 +27,11 @@ class Calendar extends Component {
     });
     return events;
   }
+
+  handleSelection = () => {
+    // Handle the selections of timerange in EventCalendar
+    alert('selected');
+  }
   
   render() {
     const { calendar } = this.props;
@@ -42,6 +47,7 @@ class Calendar extends Component {
                   displayEventTime={false}
                   selectable={true}
                   events={this.normalizeEvents(calendar.events)}
+                  handleSelection={this.handleSelection}
                 />
               )}
             </div>
