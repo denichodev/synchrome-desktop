@@ -22,7 +22,7 @@ class Calendar extends Component {
         start: event.start,
         end: event.end,
         color: event.category.color,
-        textColor: event.category.textColor
+        textColor: event.category.textColor,
       });
     });
     return events;
@@ -40,6 +40,7 @@ class Calendar extends Component {
                 <EventCalendar
                   height={530}
                   displayEventTime={false}
+                  selectable={true}
                   events={this.normalizeEvents(calendar.events)}
                 />
               )}

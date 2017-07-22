@@ -8,11 +8,12 @@ class EventCalendar extends Component {
 
   static defaultProps = {
     defaultView: 'month',
-    displayEventTime: 'false'
+    displayEventTime: 'false',
+    selectable: false
   }
 
   componentDidMount() {
-    const { defaultView, height, header, events, displayEventTime } = this.props;
+    const { defaultView, height, header, events, displayEventTime, selectable } = this.props;
 
     $('#calendar').fullCalendar({
       defaultView,
@@ -20,7 +21,7 @@ class EventCalendar extends Component {
       header,
       events,
       displayEventTime,
-      selectable: true,
+      selectable,
       select: this.handleSelection
     });
   }
