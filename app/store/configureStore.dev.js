@@ -4,8 +4,9 @@ import { createHashHistory } from 'history';
 import { routerMiddleware, routerActions } from 'react-router-redux';
 import { createLogger } from 'redux-logger';
 import rootReducer from '../ducks';
-import { counterActions } from '../ducks/counter';
-import type { counterStateType } from '../ducks/counter';
+
+import { calendarActions } from '../ducks/calendar';
+import type { calendarStateType } from '../ducks/calendar';
 
 const history = createHashHistory();
 
@@ -30,7 +31,7 @@ const configureStore = (initialState?: counterStateType) => {
 
   // Redux DevTools Configuration
   const actionCreators = {
-    ...counterActions,
+    ...calendarActions,
     ...routerActions
   };
   // If Redux DevTools Extension is installed use it, otherwise use Redux compose

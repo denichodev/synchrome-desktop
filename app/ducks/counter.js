@@ -13,7 +13,7 @@ const INCREMENT_COUNTER = 'INCREMENT_COUNTER';
 const DECREMENT_COUNTER = 'DECREMENT_COUNTER';
 
 // Reducers
-export default function counterReduucer(state: number = 0, action: actionType) {
+export default function counterReducer(state: number = 0, action: actionType) {
   switch (action.type) {
     case INCREMENT_COUNTER:
       return state + 1;

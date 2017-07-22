@@ -15,6 +15,7 @@ class Home extends Component {
                 aliquam erat volutpat. Ut wisi enim ad minim veniam, quis
                 nostrud exerci tation ullamcorper suscipit lobortis nisl ut
                 aliquip ex ea commodo consequat.
+                {process.env.SECRET}
               </div>
             </div>
           </div>

@@ -1,4 +1,3 @@
-// @flow
 import React, { Component } from 'react';
 import $ from 'jquery';
 import 'moment';
@@ -6,39 +5,27 @@ import 'fullcalendar/dist/fullcalendar';
 import styles from './EventCalendar.css';
 
 class EventCalendar extends Component {
-  props: {
-    defaultView?: string,
-    height: number,
-    header?: {
-      left?: string,
-      center?: string,
-      right?: string
-    },
-    events: []
-  }
 
   static defaultProps = {
-    defaultView: 'month'
+    defaultView: 'month',
+    displayEventTime: 'false'
   }
 
   componentDidMount() {
-    // this.props.fetchEvents();
-
-    const { defaultView, height, header, events } = this.props;
+    const { defaultView, height, header, events, displayEventTime } = this.props;
 
     $('#calendar').fullCalendar({
       defaultView,
       height,
       header,
       events,
+      displayEventTime,
       selectable: true,
       select: this.handleSelection
     });
   }
 
   handleSelection = (start, end) => {
-    console.log('start', start);
-    console.log('end', end);
   }
 
   render() {
