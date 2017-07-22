@@ -2,7 +2,7 @@
 
 exports[`Home should match snapshot 1`] = `
 <div
-  className="animated fadein"
+  className="animated fadeIn"
 >
   <div
     className="row"

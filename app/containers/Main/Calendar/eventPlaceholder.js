@@ -8,19 +8,13 @@ const randomMonth = () => {
 
 export const generateEvents = () => {
   let arr = [];
-  for (let i = 0; i < 100; i++) {
+  for (let i = 0; i < 50; i++) {
     arr.push({
       title: `event ${i}`,
       start: `2017-${randomMonth()}-${randomDay()}`,
       color: 'red'
     });
   }
-
-  arr.push({
-    title: 'event setahun',
-    start: '2017-01-01',
-    end: '2017-12-31'
-  });
 
   return arr;
 };

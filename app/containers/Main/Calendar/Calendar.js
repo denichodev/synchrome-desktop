@@ -2,6 +2,8 @@
 import React, { Component } from 'react';
 
 import EventCalendar from './EventCalendar';
+import { generateEvents } from './eventPlaceholder';
+
 
 class Calendar extends Component {
   render() {
@@ -12,6 +14,7 @@ class Calendar extends Component {
             <div className="card-block">
               <EventCalendar
                 height={530}
+                events={generateEvents()}
               />
             </div>
           </div>

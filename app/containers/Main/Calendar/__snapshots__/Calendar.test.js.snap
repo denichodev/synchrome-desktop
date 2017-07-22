@@ -2,7 +2,7 @@
 
 exports[`Calendar should match snapshot 1`] = `
 <div
-  className="animated fadein"
+  className="animated fadeIn"
 >
   <div
     className="col-md-12"
@@ -15,6 +15,260 @@ exports[`Calendar should match snapshot 1`] = `
       >
         <EventCalendar
           defaultView="month"
+          events={
+            Array [
+              Object {
+                "color": "red",
+                "start": "2017-1-28",
+                "title": "event 0",
+              },
+              Object {
+                "color": "red",
+                "start": "2017-3-6",
+                "title": "event 1",
+              },
+              Object {
+                "color": "red",
+                "start": "2017-9-5",
+                "title": "event 2",
+              },
+              Object {
+                "color": "red",
+                "start": "2017-12-26",
+                "title": "event 3",
+              },
+              Object {
+                "color": "red",
+                "start": "2017-11-9",
+                "title": "event 4",
+              },
+              Object {
+                "color": "red",
+                "start": "2017-5-7",
+                "title": "event 5",
+              },
+              Object {
+                "color": "red",
+                "start": "2017-5-7",
+                "title": "event 6",
+              },
+              Object {
+                "color": "red",
+                "start": "2017-4-21",
+                "title": "event 7",
+              },
+              Object {
+                "color": "red",
+                "start": "2017-10-18",
+                "title": "event 8",
+              },
+              Object {
+                "color": "red",
+                "start": "2017-12-24",
+                "title": "event 9",
+              },
+              Object {
+                "color": "red",
+                "start": "2017-3-4",
+                "title": "event 10",
+              },
+              Object {
+                "color": "red",
+                "start": "2017-10-7",
+                "title": "event 11",
+              },
+              Object {
+                "color": "red",
+                "start": "2017-11-5",
+                "title": "event 12",
+              },
+              Object {
+                "color": "red",
+                "start": "2017-2-3",
+                "title": "event 13",
+              },
+              Object {
+                "color": "red",
+                "start": "2017-8-5",
+                "title": "event 14",
+              },
+              Object {
+                "color": "red",
+                "start": "2017-2-16",
+                "title": "event 15",
+              },
+              Object {
+                "color": "red",
+                "start": "2017-1-6",
+                "title": "event 16",
+              },
+              Object {
+                "color": "red",
+                "start": "2017-9-4",
+                "title": "event 17",
+              },
+              Object {
+                "color": "red",
+                "start": "2017-10-1",
+                "title": "event 18",
+              },
+              Object {
+                "color": "red",
+                "start": "2017-6-6",
+                "title": "event 19",
+              },
+              Object {
+                "color": "red",
+                "start": "2017-4-21",
+                "title": "event 20",
+              },
+              Object {
+                "color": "red",
+                "start": "2017-5-5",
+                "title": "event 21",
+              },
+              Object {
+                "color": "red",
+                "start": "2017-5-19",
+                "title": "event 22",
+              },
+              Object {
+                "color": "red",
+                "start": "2017-12-18",
+                "title": "event 23",
+              },
+              Object {
+                "color": "red",
+                "start": "2017-3-21",
+                "title": "event 24",
+              },
+              Object {
+                "color": "red",
+                "start": "2017-4-20",
+                "title": "event 25",
+              },
+              Object {
+                "color": "red",
+                "start": "2017-2-23",
+                "title": "event 26",
+              },
+              Object {
+                "color": "red",
+                "start": "2017-10-23",
+                "title": "event 27",
+              },
+              Object {
+                "color": "red",
+                "start": "2017-5-18",
+                "title": "event 28",
+              },
+              Object {
+                "color": "red",
+                "start": "2017-9-12",
+                "title": "event 29",
+              },
+              Object {
+                "color": "red",
+                "start": "2017-3-7",
+                "title": "event 30",
+              },
+              Object {
+                "color": "red",
+                "start": "2017-8-3",
+                "title": "event 31",
+              },
+              Object {
+                "color": "red",
+                "start": "2017-2-7",
+                "title": "event 32",
+              },
+              Object {
+                "color": "red",
+                "start": "2017-9-6",
+                "title": "event 33",
+              },
+              Object {
+                "color": "red",
+                "start": "2017-4-13",
+                "title": "event 34",
+              },
+              Object {
+                "color": "red",
+                "start": "2017-10-2",
+                "title": "event 35",
+              },
+              Object {
+                "color": "red",
+                "start": "2017-6-23",
+                "title": "event 36",
+              },
+              Object {
+                "color": "red",
+                "start": "2017-2-18",
+                "title": "event 37",
+              },
+              Object {
+                "color": "red",
+                "start": "2017-8-9",
+                "title": "event 38",
+              },
+              Object {
+                "color": "red",
+                "start": "2017-4-20",
+                "title": "event 39",
+              },
+              Object {
+                "color": "red",
+                "start": "2017-5-18",
+                "title": "event 40",
+              },
+              Object {
+                "color": "red",
+                "start": "2017-10-3",
+                "title": "event 41",
+              },
+              Object {
+                "color": "red",
+                "start": "2017-3-10",
+                "title": "event 42",
+              },
+              Object {
+                "color": "red",
+                "start": "2017-11-25",
+                "title": "event 43",
+              },
+              Object {
+                "color": "red",
+                "start": "2017-4-12",
+                "title": "event 44",
+              },
+              Object {
+                "color": "red",
+                "start": "2017-12-3",
+                "title": "event 45",
+              },
+              Object {
+                "color": "red",
+                "start": "2017-11-2",
+                "title": "event 46",
+              },
+              Object {
+                "color": "red",
+                "start": "2017-5-21",
+                "title": "event 47",
+              },
+              Object {
+                "color": "red",
+                "start": "2017-8-22",
+                "title": "event 48",
+              },
+              Object {
+                "color": "red",
+                "start": "2017-11-17",
+                "title": "event 49",
+              },
+            ]
+          }
           height={530}
         />
       </div>

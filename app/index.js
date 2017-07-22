@@ -6,6 +6,10 @@ import Root from './containers/Root';
 import { configureStore, history } from './store/configureStore';
 import './app.global.scss';
 
+import dotenv from 'dotenv';
+
+dotenv.config();
+
 const store = configureStore();
 
 render(

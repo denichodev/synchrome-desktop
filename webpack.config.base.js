@@ -5,6 +5,7 @@
 import path from 'path';
 import webpack from 'webpack';
 import { dependencies as externals } from './app/package.json';
+require('dotenv').config;
 
 export default {
   externals: Object.keys(externals || {}),
@@ -47,4 +48,8 @@ export default {
 
     new webpack.NamedModulesPlugin(),
   ],
+
+  externals: [
+    'dotenv'
+  ]
 };

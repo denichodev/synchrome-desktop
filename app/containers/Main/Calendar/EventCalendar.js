@@ -5,8 +5,6 @@ import 'moment';
 import 'fullcalendar/dist/fullcalendar';
 import styles from './EventCalendar.css';
 
-import { generateEvents } from './eventPlaceholder';
-
 class EventCalendar extends Component {
   props: {
     defaultView?: string,
@@ -15,26 +13,32 @@ class EventCalendar extends Component {
       left?: string,
       center?: string,
       right?: string
-    }
+    },
+    events: []
   }
 
   static defaultProps = {
-    defaultView: 'month',
+    defaultView: 'month'
   }
 
   componentDidMount() {
     // this.props.fetchEvents();
 
-    const { defaultView, height, header } = this.props;
-
-    const events = generateEvents();
+    const { defaultView, height, header, events } = this.props;
 
     $('#calendar').fullCalendar({
       defaultView,
       height,
       header,
-      events: generateEvents()
+      events,
+      selectable: true,
+      select: this.handleSelection
     });
+  }
+
+  handleSelection = (start, end) => {
+    console.log('start', start);
+    console.log('end', end);
   }
 
   render() {
