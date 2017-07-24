@@ -5,7 +5,7 @@ import { withRouter } from 'react-router-dom';
 
 import EventCalendar from './EventCalendar';
 import { generateEvents } from './eventPlaceholder';
-import { fetchCalendar } from '../../../ducks/calendar';
+import { calendarActions } from '../../../ducks/calendar';
 
 class Calendar extends Component {
   componentDidMount() {
@@ -66,7 +66,7 @@ const mapStateToProps = state => ({
 })
 
 const mapDispatchToProps = dispatch => ({
-  fetchCalendar: () => dispatch(fetchCalendar())
+  fetchCalendar: () => dispatch(calendarActions.fetchCalendar())
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(withRouter(Calendar));

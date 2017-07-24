@@ -28,7 +28,8 @@
     "test-all": "npm run lint && npm run flow && npm run build && npm run test && npm run test-e2e",
     "test-e2e": "cross-env NODE_ENV=test BABEL_DISABLE_CACHE=1 node --trace-warnings ./test/runTests.js e2e",
     "test-watch": "npm test -- --watch",
-    "jest-app": "jest --watch"
+    "jest-watch": "jest --watch",
+    "jest-coverage": "jest --coverage"
   },
   "browserslist": "electron 1.6",
   "build": {
@@ -117,6 +118,15 @@
     ],
     "setupFiles": [
       "./app/jestSetup.js"
+    ],
+    "collectCoverageFrom": [
+      "app/components/**/*.{js,jsx}",
+      "app/containers/**/*.{js,jsx}",
+      "app/ducks/**/*.{js,jsx}",
+      "!**/node_modules/**",
+      "!**/vendor/**",
+      "!**/CoreUI/**",
+      "!**/dist/**"
     ]
   },
   "devDependencies": {
@@ -171,10 +181,12 @@
     "jest": "^20.0.4",
     "jsdom": "^11.0.0",
     "minimist": "^1.2.0",
+    "moxios": "^0.4.0",
     "node-sass": "^4.5.3",
     "react-addons-test-utils": "^15.6.0",
     "react-test-renderer": "^15.6.1",
     "redux-logger": "^3.0.6",
+    "redux-mock-store": "^1.2.3",
     "rimraf": "^2.6.1",
     "sass-loader": "^6.0.6",
     "sinon": "^2.3.5",

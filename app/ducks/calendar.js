@@ -1,9 +1,15 @@
 import axios from 'axios';
 
-// Actions
+// Types
 const FETCH_CALENDAR_REQUEST = 'synchrome/calendar/fetch_calendar_request';
 const FETCH_CALENDAR_SUCCESS = 'synchrome/calendar/fetch_calendar_success';
 const FETCH_CALENDAR_FAILURE = 'synchrome/calendar/fetch_calendar_failure';
+
+export const calendarTypes = {
+  FETCH_CALENDAR_REQUEST,
+  FETCH_CALENDAR_SUCCESS,
+  FETCH_CALENDAR_FAILURE
+};
 
 // Action creators
 const fetchCalendarRequest = () => {
@@ -12,21 +18,21 @@ const fetchCalendarRequest = () => {
   };
 };
 
-const fetchCalendarSuccess = calendar => {
+const fetchCalendarSuccess = payload => {
   return {
     type: FETCH_CALENDAR_SUCCESS,
-    calendar
+    payload
   };
 };
 
 const fetchCalendarFailure = error => {
   return {
     type: FETCH_CALENDAR_FAILURE,
-    error
+    error: error.message
   };
 };
 
-export function fetchCalendar() {
+const fetchCalendar = () => {
   return function (dispatch) {
     dispatch(fetchCalendarRequest());
 
@@ -46,18 +52,18 @@ export function fetchCalendar() {
   }
 }
 
+export const calendarActions = {
+  fetchCalendar
+}
+
 // Reducers
 const calendarReducer = (state = {}, action) => {
   switch (action.type) {
     case FETCH_CALENDAR_SUCCESS:
-      return { ...state, ...action.calendar };
+      return { ...action.payload };
     default:
       return state;
   }
-}
-
-export const calendarActions = {
-  fetchCalendar
 }
 
 export default calendarReducer;

@@ -1,20 +1,15 @@
 import React from 'react';
+import configureStore from 'redux-mock-store';
 import Calendar from './Calendar';
 
-function setup() {
-  const props = {};
-
-  const enzymeWrapper = shallow(<Calendar {...props} />);
-
-  return {
-    props,
-    enzymeWrapper
-  };
-}
+const mockStore = configureStore();
 
 describe('Calendar', () => {
-  it('should match snapshot', () => {
-    const { enzymeWrapper } = setup();
-    expect(enzymeWrapper).toMatchSnapshot();
+  it('should match its snapshot', () => {
+    const component = shallow(
+      <Calendar store={mockStore()} />
+    );
+
+    expect(component).toMatchSnapshot();
   });
 });

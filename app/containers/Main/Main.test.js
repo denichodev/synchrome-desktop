@@ -1,20 +1,12 @@
 import React from 'react';
 import Main from './Main';
 
-function setup() {
-  const props = {};
+describe('Main app page', () => {
+  it('should match its snapshot', () => {
+    const component = shallow(
+      <Main />
+    );
 
-  const enzymeWrapper = shallow(<Main {...props} />);
-
-  return {
-    props,
-    enzymeWrapper
-  };
-}
-
-describe('Main', () => {
-  it('should match snapshot', () => {
-    const { enzymeWrapper } = setup();
-    expect(enzymeWrapper).toMatchSnapshot();
+    expect(component).toMatchSnapshot();
   });
 });
