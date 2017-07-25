@@ -4,8 +4,10 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 
 import EventCalendar from './EventCalendar';
+import EventForm from './EventForm';
 import { generateEvents } from './eventPlaceholder';
 import { calendarActions } from '../../../ducks/calendar';
+import { eventFormActions } from '../../../ducks/eventForm';
 
 class Calendar extends Component {
   componentDidMount() {
@@ -33,26 +35,30 @@ class Calendar extends Component {
     // Handle the selections of timerange in EventCalendar, start and end is a moment obj
     const startAt = start.format('YYYY-M-D');
     const endAt = end.format('YYYY-M-D');
-    this.props.history.push(`/event/create/${startAt}/${endAt}`);
+
+    this.props.addEventFromDate(startAt, endAt);
   }
   
   render() {
     const { calendar } = this.props;
+
+    const events = (calendar.events ? this.normalizeEvents(calendar.events) : null);
 
     return (
       <div className="animated fadeIn">
         <div className="col-md-12">
           <div className="card">
             <div className="card-block">
-              {calendar.events && (
+              {events && (
                 <EventCalendar
                   height={530}
                   displayEventTime={false}
                   selectable={true}
-                  events={this.normalizeEvents(calendar.events)}
+                  events={events}
                   handleSelection={this.handleSelection}
                 />
               )}
+              <EventForm />
             </div>
           </div>
         </div>
@@ -66,7 +72,10 @@ const mapStateToProps = state => ({
 })
 
 const mapDispatchToProps = dispatch => ({
-  fetchCalendar: () => dispatch(calendarActions.fetchCalendar())
+  fetchCalendar: () => dispatch(calendarActions.fetchCalendar()),
+  addEventFromDate: (start, end) => {
+    dispatch(eventFormActions.calendarDateSelected(start, end));
+  }
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(withRouter(Calendar));

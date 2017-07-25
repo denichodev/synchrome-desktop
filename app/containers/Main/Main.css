@@ -1,3 +1,7 @@
 .main {
   padding: 20px 0;
 }
+
+.mainContainer {
+  overflow-y: scroll;
+}

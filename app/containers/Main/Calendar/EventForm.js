@@ -29,6 +29,18 @@ class EventForm extends Component {
         placeholder="Enter your event name here"
         component={this.renderTextField}
       />
+      <Field
+        label="Start date"
+        name="start"
+        placeholder="Enter start date"
+        component={this.renderTextField}
+      />
+      <Field
+        label="End date"
+        name="end"
+        placeholder="Enter end date"
+        component={this.renderTextField}
+      />
     </form>
   );
 
@@ -41,8 +53,6 @@ class EventForm extends Component {
               <div className="card-header">Add New Event</div>
               <div className="card-block">
                 {this.renderForm()}
-                {this.props.match.params.start}
-                {this.props.match.params.end}
               </div>
             </div>
           </div>
@@ -53,7 +63,8 @@ class EventForm extends Component {
 }
 
 const formOptions = {
-  form: 'EventsNewForm'
+  form: 'EventsNewForm',
+  destroyOnUnmount: false
 };
 
 export default reduxForm(formOptions)(EventForm);

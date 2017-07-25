@@ -35,7 +35,7 @@ const fetchCalendarFailure = error => {
 const fetchCalendar = () => {
   return function (dispatch) {
     dispatch(fetchCalendarRequest());
-
+    
     axios
       .get(`${process.env.CLUSTER_API_URL}/calendar`, {
         headers: {
