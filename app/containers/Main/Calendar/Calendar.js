@@ -9,6 +9,8 @@ import { generateEvents } from './eventPlaceholder';
 import { calendarActions } from '../../../ducks/calendar';
 import { eventFormActions } from '../../../ducks/eventForm';
 
+import styles from './Calendar.css';
+
 class Calendar extends Component {
   componentDidMount() {
     const { fetchCalendar } = this.props;
@@ -45,23 +47,36 @@ class Calendar extends Component {
     const events = (calendar.events ? this.normalizeEvents(calendar.events) : null);
 
     return (
-      <div className="animated fadeIn">
-        <div className="col-md-12">
-          <div className="card">
-            <div className="card-block">
-              {events && (
-                <EventCalendar
-                  height={530}
-                  displayEventTime={false}
-                  selectable={true}
-                  events={events}
-                  handleSelection={this.handleSelection}
-                />
-              )}
-              <EventForm />
+      <div className={`animated fadeIn ${styles.calendarContainer}`}>
+        <div className="row">
+          <div className="col-md-12">
+            <div className="card">
+              <div className="card-block">
+                {events && (
+                  <EventCalendar
+                    height={530}
+                    displayEventTime={false}
+                    selectable={true}
+                    events={events}
+                    handleSelection={this.handleSelection}
+                  />
+                )}
+              </div>
             </div>
           </div>
         </div>
+        <div className="row">
+          <div className="col-md-12">
+            <div className="card">
+              <div className="card-header">
+                Add New Event
+              </div>
+              <div className="card-block">
+                <EventForm />
+              </div>
+            </div>
+          </div>
+        </div>  
       </div>
     );
   }

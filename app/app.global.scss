@@ -3,11 +3,12 @@
 @import "./addons/coreui-scss/style.scss";
 @import '~fullcalendar/dist/fullcalendar.css';
 
-body {
+body, html {
   position: relative;
   height: 100vh;
   font-family: Arial, Helvetica, Helvetica Neue, serif;
   overflow-y: hidden;
+  height: 100%;
 }
 
 .full-height {

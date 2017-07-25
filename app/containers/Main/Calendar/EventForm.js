@@ -20,45 +20,30 @@ class EventForm extends Component {
       </div>
     );
   };
-
-  renderForm = () => (
-    <form>
-      <Field
-        label="Event Name"
-        name="name"
-        placeholder="Enter your event name here"
-        component={this.renderTextField}
-      />
-      <Field
-        label="Start date"
-        name="start"
-        placeholder="Enter start date"
-        component={this.renderTextField}
-      />
-      <Field
-        label="End date"
-        name="end"
-        placeholder="Enter end date"
-        component={this.renderTextField}
-      />
-    </form>
-  );
-
+  
   render() {
     return (
-      <div className="animated fadeIn">
-        <div className="row">
-          <div className="col-md-12 col-sm-12">
-            <div className="card">
-              <div className="card-header">Add New Event</div>
-              <div className="card-block">
-                {this.renderForm()}
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    );
+      <form>
+        <Field
+          label="Event Name"
+          name="name"
+          placeholder="Enter your event name here"
+          component={this.renderTextField}
+        />
+        <Field
+          label="Start date"
+          name="start"
+          placeholder="Enter start date"
+          component={this.renderTextField}
+        />
+        <Field
+          label="End date"
+          name="end"
+          placeholder="Enter end date"
+          component={this.renderTextField}
+        />
+      </form>
+    )
   }
 }
 
