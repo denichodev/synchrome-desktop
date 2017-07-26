@@ -29,7 +29,6 @@ class EventForm extends Component {
 
   renderDatepicker = field => {
     const { input, label, name } = field;
-    console.log('input datepicker', input);
 
     return (
       <div className="form-group">
