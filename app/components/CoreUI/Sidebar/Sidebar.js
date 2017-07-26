@@ -26,35 +26,17 @@ class Sidebar extends Component {
           <ul className="nav">
             <li className="nav-item">
               <NavLink to={'/'} className="nav-link" activeClassName="active">
-                <i className="icon-home" /> Home{' '}
+                <i className="icon-home" /> Home
               </NavLink>
             </li>
-            <li className={this.activeRoute('/calendar')}>
-              <a
-                className="nav-link nav-dropdown-toggle"
-                href="#"
-                onClick={this.handleClick.bind(this)}
+            <li className="nav-item">
+              <NavLink
+                to={'/calendar/view'}
+                className="nav-link"
+                activeClassName="active"
               >
                 <i className="icon-calendar" /> Calendar
-              </a>
-              <ul className="nav-dropdown-items">
-                <li className="nav-item">
-                  <NavLink
-                    to={'/calendar/view'}
-                    className="nav-link"
-                    activeClassName="active"
-                  >
-                    <i className="icon-calendar" /> View Calendar
-                  </NavLink>
-                  <NavLink
-                    to={'/event/create'}
-                    className="nav-link"
-                    activeClassName="active"
-                  >
-                    <i className="icon-calendar" /> Add Events
-                  </NavLink>
-                </li>
-              </ul>
+              </NavLink>
             </li>
           </ul>
         </nav>
