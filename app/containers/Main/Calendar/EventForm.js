@@ -35,11 +35,13 @@ class EventForm extends Component {
         <label htmlFor={name}>
           {label}
         </label>
-        <DatePicker
-          selected={input.value}
-          onChange={input.onChange}
-          className="form-control"
-        />
+        <div className={styles.datepickerContainer}>
+          <DatePicker
+            selected={input.value}
+            onChange={input.onChange}
+            className={`form-control ${styles.datePicker}`}
+          />  
+        </div>  
       </div>
     )
   }
