@@ -5,7 +5,6 @@ import 'fullcalendar/dist/fullcalendar';
 import styles from './EventCalendar.css';
 
 class EventCalendar extends Component {
-
   static defaultProps = {
     defaultView: 'month',
     displayEventTime: 'false',
@@ -13,10 +12,19 @@ class EventCalendar extends Component {
     handleSelection: (start, end) => {
       console.log(start, end);
     }
-  }
+  };
 
   componentDidMount() {
-    const { defaultView, height, header, events, displayEventTime, selectable, handleSelection } = this.props;
+    const {
+      defaultView,
+      height,
+      header,
+      events,
+      displayEventTime,
+      selectable,
+      handleSelection,
+      validRange
+    } = this.props;
 
     $('#calendar').fullCalendar({
       defaultView,
@@ -25,14 +33,13 @@ class EventCalendar extends Component {
       events,
       displayEventTime,
       selectable,
+      validRange,
       select: handleSelection
     });
   }
 
   render() {
-    return (
-      <div id="calendar" className={styles.fullCalendar} />
-    );
+    return <div id="calendar" className={styles.fullCalendar} />;
   }
 }
 

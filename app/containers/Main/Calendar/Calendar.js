@@ -44,6 +44,13 @@ class Calendar extends Component {
   render() {
     const { calendar } = this.props;
 
+    console.log('calendar', calendar);
+
+    const validRange = (calendar.startDate ? {
+      start: calendar.startDate,
+      end: calendar.endDate
+    } : null);
+
     const events = (calendar.events ? this.normalizeEvents(calendar.events) : null);
 
     return (
@@ -59,6 +66,7 @@ class Calendar extends Component {
                     selectable={true}
                     events={events}
                     handleSelection={this.handleSelection}
+                    validRange={validRange}
                   />
                 )}
               </div>
