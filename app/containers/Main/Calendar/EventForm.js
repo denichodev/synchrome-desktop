@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Field, reduxForm } from 'redux-form';
+import { connect } from 'react-redux';
 import moment from 'moment';
 import DatePicker from 'react-datepicker';
 
@@ -40,6 +41,8 @@ class EventForm extends Component {
             selected={input.value}
             onChange={input.onChange}
             className={`form-control ${styles.datePicker}`}
+            minDate={moment(this.props.datepickerStart).add(1, 'days')}
+            maxDate={moment(this.props.datepickerEnd).add(1, 'days')}
           />  
         </div>  
       </div>
@@ -55,6 +58,7 @@ class EventForm extends Component {
   }
 
   render() {
+    console.log(this.props.datepickerStart);
 
     return (
       <form>
@@ -85,9 +89,14 @@ class EventForm extends Component {
   }
 }
 
+const mapStateToProps = state => ({
+  datepickerStart: state.calendar.startDate,
+  datepickerEnd: state.calendar.endDate
+});
+
 const formOptions = {
   form: 'EventsNewForm',
   destroyOnUnmount: false
 };
 
-export default reduxForm(formOptions)(EventForm);
+export default reduxForm(formOptions)(connect(mapStateToProps)(EventForm));

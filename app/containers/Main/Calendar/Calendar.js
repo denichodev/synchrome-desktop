@@ -43,9 +43,7 @@ class Calendar extends Component {
   
   render() {
     const { calendar } = this.props;
-
-    console.log('calendar', calendar);
-
+    
     const validRange = (calendar.startDate ? {
       start: calendar.startDate,
       end: calendar.endDate
