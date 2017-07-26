@@ -2,7 +2,7 @@
 
 exports[`Event form  match its snapshot 1`] = `
 <Connect(Form(EventForm))
-  destroyOnUnmount={true}
+  destroyOnUnmount={false}
   enableReinitialize={false}
   forceUnregisterOnUnmount={false}
   form="EventsNewForm"

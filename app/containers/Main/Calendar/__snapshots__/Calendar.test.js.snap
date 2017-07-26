@@ -2,6 +2,7 @@
 
 exports[`Calendar should match its snapshot 1`] = `
 <withRouter(Calendar)
+  addEventFromDate={[Function]}
   fetchCalendar={[Function]}
   store={
     Object {

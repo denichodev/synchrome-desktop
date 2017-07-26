@@ -35,10 +35,10 @@ class Calendar extends Component {
 
   handleSelection = (start, end) => {
     // Handle the selections of timerange in EventCalendar, start and end is a moment obj
-    const startAt = start.format('YYYY-M-D');
-    const endAt = end.format('YYYY-M-D');
+    // const startAt = start.format('YYYY-M-D');
+    // const endAt = end.format('YYYY-M-D');
 
-    this.props.addEventFromDate(startAt, endAt);
+    this.props.selectDateFromCalendar(start, end);
   }
   
   render() {
@@ -66,7 +66,7 @@ class Calendar extends Component {
           </div>
         </div>
         <div className="row">
-          <div className="col-md-12">
+          <div className="col-md-6">
             <div className="card">
               <div className="card-header">
                 Add New Event
@@ -88,7 +88,7 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   fetchCalendar: () => dispatch(calendarActions.fetchCalendar()),
-  addEventFromDate: (start, end) => {
+  selectDateFromCalendar: (start, end) => {
     dispatch(eventFormActions.calendarDateSelected(start, end));
   }
 });

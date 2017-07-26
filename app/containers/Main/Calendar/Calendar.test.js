@@ -56,6 +56,5 @@ describe('Calendar', () => {
 
     const wrapper = shallow(<Calendar store={mockStore()} />);
     const instance = wrapper.dive();
-    console.log(instance);
   });
 });
