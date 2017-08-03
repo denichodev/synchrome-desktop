@@ -8,12 +8,12 @@ import styles from './EventForm.css';
 
 class EventForm extends Component {
   renderTextField = field => {
-    // const { meta: { touched, error } } = field;
-    // const className = `form-group ${touched && error ? 'has-danger' : ''}`;
-    const { label, name, input, placeholder, disabled } = field;
+    const { meta: { touched, error } } = field;
+    const className = `form-group ${touched && error ? 'has-danger' : ''}`;
 
+    const { label, name, input, placeholder, formEnabled } = field;
     return (
-      <div className="form-group">
+      <div className={className}>
         <label htmlFor={name}>
           {label}
         </label>
@@ -21,7 +21,7 @@ class EventForm extends Component {
           type="text"
           className="form-control"
           placeholder={placeholder}
-          disabled={disabled}
+          disabled={!formEnabled}
           {...input}
         />
       </div>
@@ -29,10 +29,13 @@ class EventForm extends Component {
   };
 
   renderDatepicker = field => {
-    const { input, label, name } = field;
+    console.log(field);
+    const { meta: { pristine, error } } = field;
+    const className = `form-group ${!pristine && error ? 'has-danger' : ''}`;
+    const { input, label, name, formEnabled } = field;
 
     return (
-      <div className="form-group">
+      <div className={className}>
         <label htmlFor={name}>
           {label}
         </label>
@@ -43,22 +46,23 @@ class EventForm extends Component {
             className={`form-control ${styles.datePicker}`}
             minDate={moment(this.props.datepickerStart).add(1, 'days')}
             maxDate={moment(this.props.datepickerEnd).add(1, 'days')}
-          />  
-        </div>  
+            disabled={!formEnabled}
+          />
+        </div>
       </div>
-    )
-  }
+    );
+  };
 
   getNumberList = max => {
-    let array = [];
-    for (let i = 1; i <= max; i++) {
+    const array = [];
+    for (let i = 1; i <= max; i += 1) {
       array.push(i);
-    };
+    }
     return array;
-  }
+  };
 
   render() {
-    console.log(this.props.datepickerStart);
+    const { formEnabled } = this.props;
 
     return (
       <form>
@@ -67,6 +71,7 @@ class EventForm extends Component {
           name="name"
           placeholder="Enter your event name here"
           component={this.renderTextField}
+          formEnabled={formEnabled}
         />
         <div className="row">
           <div className="col-md-6">
@@ -74,6 +79,7 @@ class EventForm extends Component {
               label="Start Date"
               name="start"
               component={this.renderDatepicker}
+              formEnabled={formEnabled}
             />
           </div>
           <div className="col-md-6">
@@ -81,22 +87,34 @@ class EventForm extends Component {
               label="End Date"
               name="end"
               component={this.renderDatepicker}
+              formEnabled={formEnabled}
             />
-          </div>  
+          </div>
         </div>
       </form>
-    )
+    );
   }
 }
 
 const mapStateToProps = state => ({
-  datepickerStart: state.calendar.startDate,
-  datepickerEnd: state.calendar.endDate
+  datepickerStart: state.calendar.start,
+  datepickerEnd: state.calendar.end
 });
+
+const validate = values => {
+  const errors = {};
+
+  if (moment(values.end).isBefore(values.start)) {
+    errors.end = 'End date is before start';
+  }
+
+  return errors;
+};
 
 const formOptions = {
   form: 'EventsNewForm',
-  destroyOnUnmount: false
+  enableReinitialize: true,
+  validate
 };
 
 export default reduxForm(formOptions)(connect(mapStateToProps)(EventForm));
