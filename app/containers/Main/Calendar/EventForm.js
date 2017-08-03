@@ -29,7 +29,6 @@ class EventForm extends Component {
   };
 
   renderDatepicker = field => {
-    console.log(field);
     const { meta: { pristine, error } } = field;
     const className = `form-group ${!pristine && error ? 'has-danger' : ''}`;
     const { input, label, name, formEnabled } = field;
