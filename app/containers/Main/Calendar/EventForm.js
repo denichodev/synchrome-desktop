@@ -3,6 +3,7 @@ import { Field, reduxForm } from 'redux-form';
 import { connect } from 'react-redux';
 import moment from 'moment';
 import DatePicker from 'react-datepicker';
+import { eventFormActions } from '../../../ducks/eventForm';
 
 import styles from './EventForm.css';
 
@@ -14,9 +15,7 @@ class EventForm extends Component {
     const { label, name, input, placeholder, formEnabled } = field;
     return (
       <div className={className}>
-        <label htmlFor={name}>
-          {label}
-        </label>
+        <label htmlFor={name}>{label}</label>c
         <input
           type="text"
           className="form-control"
@@ -52,6 +51,12 @@ class EventForm extends Component {
     );
   };
 
+  onSubmit = values => {
+    const { handleSubmitEvent, calendarId } = this.props;
+
+    handleSubmitEvent(calendarId, values);
+  };
+
   getNumberList = max => {
     const array = [];
     for (let i = 1; i <= max; i += 1) {
@@ -61,10 +66,10 @@ class EventForm extends Component {
   };
 
   render() {
-    const { formEnabled } = this.props;
+    const { formEnabled, handleSubmit } = this.props;
 
     return (
-      <form>
+      <form onSubmit={handleSubmit(this.onSubmit)}>
         <Field
           label="Event Name"
           name="name"
@@ -90,6 +95,13 @@ class EventForm extends Component {
             />
           </div>
         </div>
+        <button
+          type="submit"
+          className="btn btn-primary pull-right"
+          disabled={!this.props.formEnabled}
+        >
+          Submit
+        </button>
       </form>
     );
   }
@@ -97,7 +109,13 @@ class EventForm extends Component {
 
 const mapStateToProps = state => ({
   datepickerStart: state.calendar.start,
-  datepickerEnd: state.calendar.end
+  datepickerEnd: state.calendar.end,
+  calendarId: state.calendar.id
+});
+
+const mapDispatchToProps = dispatch => ({
+  handleSubmitEvent: (calendarId, eventData) =>
+    dispatch(eventFormActions.submitEvent(calendarId, eventData))
 });
 
 const validate = values => {
@@ -116,4 +134,4 @@ const formOptions = {
   validate
 };
 
-export default reduxForm(formOptions)(connect(mapStateToProps)(EventForm));
+export default reduxForm(formOptions)(connect(mapStateToProps, mapDispatchToProps)(EventForm));

@@ -43,7 +43,7 @@ class Calendar extends Component {
     // Handle the selections of timerange in EventCalendar, start and end is a moment obj
     this.props.selectDateFromCalendar(start, end);
   };
-
+  
   handleFormClick = () => {
     this.setState((prevState) => {
       return {

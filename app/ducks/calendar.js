@@ -123,7 +123,7 @@ const fetchCalendarFailure = error => {
 };
 
 const fetchCalendar = () => {
-  return function(dispatch) {
+  return (dispatch) => {
     dispatch(fetchCalendarRequest());
 
     axios
