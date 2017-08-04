@@ -15,7 +15,7 @@ class EventForm extends Component {
     const { label, name, input, placeholder, formEnabled } = field;
     return (
       <div className={className}>
-        <label htmlFor={name}>{label}</label>c
+        <label htmlFor={name}>{label}</label>
         <input
           type="text"
           className="form-control"
