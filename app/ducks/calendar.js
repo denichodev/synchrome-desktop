@@ -8,7 +8,7 @@ const FETCH_CALENDAR_FAILURE = 'synchrome/calendar/fetch_calendar_failure';
 const placeholderCalendar = {
   result: 'success',
   data: {
-    id: 1,
+    id: 13123,
     name: 'Kalender Pemprov',
     start: '2017-01-01',
     end: '2017-12-31 07:00:00',
@@ -124,6 +124,8 @@ const fetchCalendarFailure = error => {
 
 const fetchCalendar = () => {
   return (dispatch) => {
+
+    // TODO: DISPATCHING A LOADING BAR
     dispatch(fetchCalendarRequest());
 
     axios
@@ -139,6 +141,7 @@ const fetchCalendar = () => {
         dispatch(fetchCalendarSuccess(placeholderCalendar.data));
       })
       .catch(err => {
+        // TODO: IMPLEMENT REAL ERROR HANDLING FEATURE
         dispatch(fetchCalendarFailure(err));
       });
   };

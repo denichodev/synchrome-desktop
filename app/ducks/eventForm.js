@@ -37,7 +37,7 @@ const eventPostSuccess = payload => {
   };
 };
 
-const eventPostFaied = error => {
+const eventPostFailed = error => {
   return {
     type: EVENT_POST_FAILURE,
     error
@@ -45,6 +45,11 @@ const eventPostFaied = error => {
 };
 
 const submitEvent = (calendarId, eventData) => {
+  const submittedData = {
+    calendarId,
+    eventData
+  };
+
   return dispatch => {
     // TODO: DISPATCHING A LOADING BAR
     dispatch(eventPostRequest());
@@ -58,16 +63,16 @@ const submitEvent = (calendarId, eventData) => {
       .then(res => {
         // EVENT POST SUCCEEDED AND DISPATCHING
         // TODO: IMPLEMENT WITH REAL API
+        console.log(res);        
+        console.log('event post succeed', submittedData);        
         dispatch(eventPostSuccess({ dummyData: eventData }));
-        console.log(eventData);
-        console.log(res);
       })
       .catch(err => {
         // EVENT POST FAILED AND DISPATCHING FAILURE
         // TODO: IMPLEMENT REAL ERROR HANDLING
-        dispatch(eventPostSuccess({ dummyData: eventData }));
-        console.log(eventData);        
-        console.log(err);
+        console.log(err);        
+        console.log('event post failed', submittedData);
+        dispatch(eventPostFailed({ dummyData: eventData }));
       });
   };
 };

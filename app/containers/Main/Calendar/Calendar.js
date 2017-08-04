@@ -76,7 +76,7 @@ class Calendar extends Component {
                   <EventCalendar
                     height={530}
                     displayEventTime={false}
-                    selectable={true}
+                    selectable
                     events={events}
                     handleSelection={this.handleSelection}
                     validRange={validRange}
