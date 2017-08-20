@@ -158,7 +158,7 @@ export const eventActions = {
 const eventReducer = (state = {}, action) => {
   switch (action.type) {
     case FETCH_EVENT_SUCCESS:
-      return { ...action.payload }
+      return { ...action.payload };
     default:
       return state;
   }
