@@ -43,22 +43,27 @@ class Calendar extends Component {
     // Handle the selections of timerange in EventCalendar, start and end is a moment obj
     this.props.selectDateFromCalendar(start, end);
   };
-  
+
   handleFormClick = () => {
-    this.setState((prevState) => {
+    this.setState(prevState => {
       return {
         formEnabled: !prevState.formEnabled
-      }
+      };
     });
   };
+
+  handleCalendarList = () => {
+    // TODO: List all fetched calendar
+    console.log('handling calendar list');
+  }
 
   render() {
     const { calendar } = this.props;
 
     const validRange = calendar.start
       ? {
-        start: calendar.start,
-        end: calendar.end
+          start: calendar.start,
+          end: calendar.end
         }
       : null;
 
@@ -69,23 +74,16 @@ class Calendar extends Component {
     return (
       <div className={`animated fadeIn ${styles.calendarContainer}`}>
         <div className="row">
-          <div className="col-md-12">
+          <div className="col-md-6">
             <div className="card">
+              <div className="card-header">
+                Select Calendar
+              </div>
               <div className="card-block">
-                {events &&
-                  <EventCalendar
-                    height={530}
-                    displayEventTime={false}
-                    selectable
-                    events={events}
-                    handleSelection={this.handleSelection}
-                    validRange={validRange}
-                  />}
+                {this.handleCalendarList()}
               </div>
             </div>
           </div>
-        </div>
-        <div className="row">
           <div className="col-md-6">
             <div className="card">
               <div className="card-header">
@@ -102,6 +100,23 @@ class Calendar extends Component {
               </div>
               <div className="card-block">
                 <EventForm formEnabled={this.state.formEnabled} />
+              </div>
+            </div>
+          </div>
+        </div>
+        <div className="row">
+          <div className="col-md-12">
+            <div className="card">
+              <div className="card-block">
+                {events &&
+                  <EventCalendar
+                    height={530}
+                    displayEventTime={false}
+                    selectable
+                    events={events}
+                    handleSelection={this.handleSelection}
+                    validRange={validRange}
+                  />}
               </div>
             </div>
           </div>
