@@ -46,10 +46,12 @@ const fetchCalendars = () => {
       })
       .then(res => {
         // FIXME: still using placeholder calendar object
+        console.log(res);
         dispatch(fetchCalendarsSuccess(res.data.data));
       })
       .catch(err => {
         // TODO: IMPLEMENT REAL ERROR HANDLING FEATURE
+        console.log(err);
         dispatch(fetchCalendarsFailure(err.message));
       });
   };

@@ -15,7 +15,8 @@ class Calendar extends Component {
     super(props);
 
     this.state = {
-      formEnabled: false
+      formEnabled: false,
+      selectedCalendarId: 0
     };
   }
 
@@ -24,21 +25,6 @@ class Calendar extends Component {
 
     fetchCalendar();
   }
-
-  normalizeEvents = data => {
-    let events = [];
-    data.map(event => {
-      events.push({
-        id: event.id,
-        title: event.name,
-        start: event.start,
-        end: event.end,
-        color: event.category.color,
-        textColor: event.category.text_color
-      });
-    });
-    return events;
-  };
 
   handleSelection = (start, end) => {
     // Handle the selections of timerange in EventCalendar, start and end is a moment obj
@@ -57,12 +43,10 @@ class Calendar extends Component {
     // TODO: List all fetched calendar
     const { calendars } = this.props;
 
-    console.log('calendars', calendars);
-
     if (!calendars.length) { return; }
 
     return (
-      <select>
+      <select onChange={this.handleCalendarPicked}>
         <option key={0} value={0}>Select Calendar</option>
         {this.props.calendars.map(calendar => {
           return <option key={calendar.id} value={calendar.id}>{calendar.name}</option>
@@ -71,22 +55,26 @@ class Calendar extends Component {
     );
   }
 
-  handleCalendarPicked = () => {
+  handleCalendarPicked = e => {
     // TODO: FETCH EVENTS BASED ON CALENDAR ID PICKED
+    const { fetchEvent } = this.props;
+    const selectedCalendarId = e.target.value;
+    this.setState({
+      selectedCalendarId
+    });
+    fetchEvent(selectedCalendarId);
   }
 
   render() {
-    const { calendars } = this.props;
+    const { calendars, events } = this.props;
+
+    const eventsToShow = events[this.state.selectedCalendarId];
 
     const validRange = calendars.start
       ? {
           start: calendars.start,
           end: calendars.end
         }
-      : null;
-
-    const events = calendars.events
-      ? this.normalizeEvents(calendars.events)
       : null;
 
     return (
@@ -126,12 +114,12 @@ class Calendar extends Component {
           <div className="col-md-12">
             <div className="card">
               <div className="card-block">
-                {events &&
+                {eventsToShow &&
                   <EventCalendar
                     height={530}
                     displayEventTime={false}
                     selectable
-                    events={events}
+                    events={eventsToShow}
                     handleSelection={this.handleSelection}
                     validRange={validRange}
                   />}
@@ -145,7 +133,8 @@ class Calendar extends Component {
 }
 
 const mapStateToProps = state => ({
-  calendars: state.calendar
+  calendars: state.calendar,
+  events: state.event
 });
 
 const mapDispatchToProps = dispatch => ({

@@ -137,9 +137,11 @@ const fetchEvents = calendarId => {
       })
       .then(res => {
         // FIXME: still using placeholder calendar object
-        console.log(res);
-        // const calendar = res.data.data[0];
-        dispatch(fetchEventsSuccess(placeholderEvents.data));
+        const events = {
+          [calendarId]: res.data.data
+        };
+        console.log(events);
+        dispatch(fetchEventsSuccess(events))
       })
       .catch(err => {
         // TODO: IMPLEMENT REAL ERROR HANDLING FEATURE
@@ -156,7 +158,7 @@ export const eventActions = {
 const eventReducer = (state = {}, action) => {
   switch (action.type) {
     case FETCH_EVENT_SUCCESS:
-      return { ...action.payload };
+      return { ...action.payload }
     default:
       return state;
   }
