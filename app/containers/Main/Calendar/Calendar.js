@@ -6,6 +6,7 @@ import EventCalendar from './EventCalendar';
 import EventForm from './EventForm';
 import { calendarActions } from '../../../ducks/calendar';
 import { eventFormActions } from '../../../ducks/eventForm';
+import { eventActions } from '../../../ducks/event';
 
 import styles from './Calendar.css';
 
@@ -52,23 +53,40 @@ class Calendar extends Component {
     });
   };
 
-  handleCalendarList = () => {
+  renderCalendarList = () => {
     // TODO: List all fetched calendar
-    console.log('handling calendar list');
+    const { calendars } = this.props;
+
+    console.log('calendars', calendars);
+
+    if (!calendars.length) { return; }
+
+    return (
+      <select>
+        <option key={0} value={0}>Select Calendar</option>
+        {this.props.calendars.map(calendar => {
+          return <option key={calendar.id} value={calendar.id}>{calendar.name}</option>
+        })}
+      </select>
+    );
+  }
+
+  handleCalendarPicked = () => {
+    // TODO: FETCH EVENTS BASED ON CALENDAR ID PICKED
   }
 
   render() {
-    const { calendar } = this.props;
+    const { calendars } = this.props;
 
-    const validRange = calendar.start
+    const validRange = calendars.start
       ? {
-          start: calendar.start,
-          end: calendar.end
+          start: calendars.start,
+          end: calendars.end
         }
       : null;
 
-    const events = calendar.events
-      ? this.normalizeEvents(calendar.events)
+    const events = calendars.events
+      ? this.normalizeEvents(calendars.events)
       : null;
 
     return (
@@ -80,7 +98,7 @@ class Calendar extends Component {
                 Select Calendar
               </div>
               <div className="card-block">
-                {this.handleCalendarList()}
+                {calendars && this.renderCalendarList()}
               </div>
             </div>
           </div>
@@ -127,11 +145,12 @@ class Calendar extends Component {
 }
 
 const mapStateToProps = state => ({
-  calendar: state.calendar
+  calendars: state.calendar
 });
 
 const mapDispatchToProps = dispatch => ({
-  fetchCalendar: () => dispatch(calendarActions.fetchCalendar()),
+  fetchCalendar: () => dispatch(calendarActions.fetchCalendars()),
+  fetchEvent: (calendarId) => dispatch(eventActions.fetchEvents(calendarId)),
   selectDateFromCalendar: (start, end) => {
     dispatch(eventFormActions.calendarDateSelected(start, end));
   }
