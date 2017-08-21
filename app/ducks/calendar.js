@@ -45,7 +45,6 @@ const fetchCalendars = () => {
         }
       })
       .then(res => {
-        // FIXME: still using placeholder calendar object
         console.log(res);
         dispatch(fetchCalendarsSuccess(res.data.data));
       })

@@ -38,7 +38,6 @@ const fetchEvents = calendarId => {
     // TODO: DISPATCHING A LOADING BAR
     dispatch(fetchEventsRequest());
 
-    // FIXME: CHANGE THE WAY TO FETCH EVENTS BY CALENDAR/{:ID}
     axios
       .get(`${process.env.CLUSTER_API_URL}/calendar/${calendarId}/events`, {
         headers: {
@@ -46,7 +45,6 @@ const fetchEvents = calendarId => {
         }
       })
       .then(res => {
-        // FIXME: still using placeholder calendar object
         const events = {
           [calendarId]: res.data.data
         };
