@@ -43,17 +43,25 @@ class Calendar extends Component {
     // TODO: List all fetched calendar
     const { calendars } = this.props;
 
-    if (!calendars.length) { return; }
+    if (!calendars.length) {
+      return;
+    }
 
     return (
-      <select onChange={this.handleCalendarPicked}>
-        <option key={0} value={0}>Select Calendar</option>
+      <select className="form-control" onChange={this.handleCalendarPicked}>
+        <option key={0} value={0}>
+          Select Calendar
+        </option>
         {this.props.calendars.map(calendar => {
-          return <option key={calendar.id} value={calendar.id}>{calendar.name}</option>
+          return (
+            <option key={calendar.id} value={calendar.id}>
+              {calendar.name}
+            </option>
+          );
         })}
       </select>
     );
-  }
+  };
 
   handleCalendarPicked = e => {
     // TODO: FETCH EVENTS BASED ON CALENDAR ID PICKED
@@ -63,7 +71,7 @@ class Calendar extends Component {
       selectedCalendarId
     });
     fetchEvent(selectedCalendarId);
-  }
+  };
 
   render() {
     const { calendars, events } = this.props;
@@ -80,32 +88,11 @@ class Calendar extends Component {
     return (
       <div className={`animated fadeIn ${styles.calendarContainer}`}>
         <div className="row">
-          <div className="col-md-6">
+          <div className="col-md-12">
             <div className="card">
-              <div className="card-header">
-                Select Calendar
-              </div>
+              <div className="card-header">Select Calendar</div>
               <div className="card-block">
                 {calendars && this.renderCalendarList()}
-              </div>
-            </div>
-          </div>
-          <div className="col-md-6">
-            <div className="card">
-              <div className="card-header">
-                Add New Event
-                <label className="switch switch-sm switch-text switch-info float-right mb-0">
-                  <input
-                    type="checkbox"
-                    className="switch-input"
-                    onClick={this.handleFormClick}
-                  />
-                  <span className="switch-label" data-on="On" data-off="Off" />
-                  <span className="switch-handle" />
-                </label>
-              </div>
-              <div className="card-block">
-                <EventForm formEnabled={this.state.formEnabled} />
               </div>
             </div>
           </div>
@@ -127,6 +114,27 @@ class Calendar extends Component {
             </div>
           </div>
         </div>
+        <div className="row">
+          <div className="col-md-12">
+            <div className="card">
+              <div className="card-header">
+                Add New Event
+                <label className="switch switch-sm switch-text switch-info float-right mb-0">
+                  <input
+                    type="checkbox"
+                    className="switch-input"
+                    onClick={this.handleFormClick}
+                  />
+                  <span className="switch-label" data-on="On" data-off="Off" />
+                  <span className="switch-handle" />
+                </label>
+              </div>
+              <div className="card-block">
+                <EventForm formEnabled={this.state.formEnabled} />
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     );
   }
@@ -139,7 +147,7 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   fetchCalendar: () => dispatch(calendarActions.fetchCalendars()),
-  fetchEvent: (calendarId) => dispatch(eventActions.fetchEvents(calendarId)),
+  fetchEvent: calendarId => dispatch(eventActions.fetchEvents(calendarId)),
   selectDateFromCalendar: (start, end) => {
     dispatch(eventFormActions.calendarDateSelected(start, end));
   }
